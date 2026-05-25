@@ -1,7 +1,3 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
 :root {
   --background: #FAFAF7;
   --surface: #FFFFFF;
@@ -20,9 +16,18 @@
   --border: #E8E3DC;
 }
 
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-display: var(--font-display), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
+  --color-saffron: #C17A2E;
+  --color-olive: #4A6741;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);

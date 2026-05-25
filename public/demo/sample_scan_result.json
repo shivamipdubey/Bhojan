@@ -1,0 +1,83 @@
+{
+  "restaurant": "Bella Italia",
+  "scanId": "demo-scan-001",
+  "dishes": [
+    {
+      "name": "Margherita Pizza",
+      "status": "warning",
+      "confidence": 0.87,
+      "violations": ["garlic"],
+      "violationReason": "Italian pizza base sauces typically contain garlic. Cannot confirm without asking kitchen.",
+      "hiddenRisk": "Garlic powder is common in Italian herb seasoning blends used on the crust.",
+      "alternatives": ["Request base sauce without garlic", "Ask for plain tomato with just basil"],
+      "observanceNote": null
+    },
+    {
+      "name": "Mushroom Risotto",
+      "status": "violation",
+      "confidence": 0.94,
+      "violations": ["mushrooms", "white wine"],
+      "violationReason": "Contains mushrooms which violate satvik and Jain practice. Risotto stock almost always contains white wine.",
+      "hiddenRisk": "White wine is a standard ingredient in risotto preparation even when not stated on the menu.",
+      "alternatives": ["Penne Pomodoro", "Grilled vegetable plate — confirm no garlic"],
+      "observanceNote": null
+    },
+    {
+      "name": "Penne Pomodoro",
+      "status": "safe",
+      "confidence": 0.82,
+      "violations": [],
+      "violationReason": "",
+      "hiddenRisk": "Confirm with kitchen that tomato sauce does not contain garlic. Some Italian restaurants add garlic as standard.",
+      "alternatives": [],
+      "observanceNote": "Safe today. On Ekadashi in 2 days, pasta will be restricted as it contains wheat."
+    },
+    {
+      "name": "Caesar Salad",
+      "status": "violation",
+      "confidence": 0.96,
+      "violations": ["Worcestershire sauce", "anchovy", "egg"],
+      "violationReason": "Classic Caesar dressing contains Worcestershire sauce made with anchovies, and egg yolk in the dressing base.",
+      "hiddenRisk": "Even vegetarian Caesar versions often retain the Worcestershire flavor base. Always confirm.",
+      "alternatives": ["Garden salad with olive oil and lemon", "Ask for plain greens with no dressing"],
+      "observanceNote": null
+    },
+    {
+      "name": "Garlic Bread",
+      "status": "violation",
+      "confidence": 0.99,
+      "violations": ["garlic"],
+      "violationReason": "Garlic is the primary ingredient. Garlic powder also present in the butter mix.",
+      "hiddenRisk": "Some focaccia-style garlic breads use egg wash on the crust.",
+      "alternatives": ["Plain bread or grissini — confirm no garlic butter"],
+      "observanceNote": null
+    },
+    {
+      "name": "Tiramisu",
+      "status": "violation",
+      "confidence": 0.98,
+      "violations": ["coffee liqueur", "eggs"],
+      "violationReason": "Traditional tiramisu contains Kahlua or Marsala wine (alcohol) and egg yolks in the mascarpone mix.",
+      "hiddenRisk": "Some restaurant versions use gelatin as a stabilizer.",
+      "alternatives": ["Fresh fruit plate", "Ask for a non-alcoholic dessert option"],
+      "observanceNote": null
+    },
+    {
+      "name": "Panna Cotta",
+      "status": "uncertain",
+      "confidence": 0.38,
+      "violations": [],
+      "violationReason": "",
+      "hiddenRisk": "Panna cotta is set with gelatin. Cannot determine if vegetarian or agar-based without asking kitchen.",
+      "alternatives": ["Ask kitchen: is the panna cotta set with gelatin or agar-agar?"],
+      "observanceNote": null
+    }
+  ],
+  "overallSafety": "caution",
+  "observanceAlert": "Ekadashi is in 2 days. On that day, Penne Pomodoro and all pasta will be restricted as they contain wheat.",
+  "safeCount": 1,
+  "warningCount": 1,
+  "violationCount": 4,
+  "uncertainCount": 1,
+  "isDemoMode": true
+}

@@ -1,17 +1,5 @@
-// src/types/index.ts
-// Central type definitions for Bhojan
-// Import from here in all components and API routes
-
-export type Tradition =
-  | 'satvik'
-  | 'jain'
-  | 'halal'
-  | 'kosher'
-  | 'christian'
-  | 'custom'
-
+export type Tradition = 'satvik' | 'jain' | 'halal' | 'kosher' | 'christian' | 'custom'
 export type ComplianceStatus = 'safe' | 'warning' | 'violation' | 'uncertain'
-
 export type OverallSafety = 'safe' | 'caution' | 'avoid'
 
 export interface UserProfile {
@@ -81,55 +69,13 @@ export interface MarketplaceItem {
   observanceTags: string[]
 }
 
-export interface ScanApiRequest {
-  imageBase64: string
-  mimeType: 'image/jpeg' | 'image/png' | 'image/webp'
-  profile: {
-    tradition: Tradition
-    subTradition: string | null
-    allergies: string[]
-    dislikes: string[]
-    activeObservances: string[]
-  }
-}
+export const STATUS_STYLES = {
+  safe:      { bg: '#EDF7F2', text: '#2E7D5B', border: '#2E7D5B', label: 'SAFE' },
+  warning:   { bg: '#FFF8E1', text: '#B8860B', border: '#B8860B', label: 'WARNING' },
+  violation: { bg: '#FDECEA', text: '#C0392B', border: '#C0392B', label: 'VIOLATION' },
+  uncertain: { bg: '#F5F5F5', text: '#888888', border: '#888888', label: 'UNCERTAIN' },
+} as const
 
-export interface OnboardingState {
-  step: 1 | 2 | 3
-  tradition: Tradition | null
-  subTradition: string | null
-  allergies: string[]
-  dislikes: string[]
-}
-
-// Status color mapping — use these in components
-export const STATUS_COLORS: Record<ComplianceStatus, {
-  bg: string
-  text: string
-  border: string
-}> = {
-  safe: {
-    bg: '#EDF7F2',
-    text: '#2E7D5B',
-    border: '#2E7D5B',
-  },
-  warning: {
-    bg: '#FFF8E1',
-    text: '#B8860B',
-    border: '#B8860B',
-  },
-  violation: {
-    bg: '#FDECEA',
-    text: '#C0392B',
-    border: '#C0392B',
-  },
-  uncertain: {
-    bg: '#F5F5F5',
-    text: '#888888',
-    border: '#888888',
-  },
-}
-
-// Tradition display names — use these in UI
 export const TRADITION_LABELS: Record<Tradition, string> = {
   satvik: 'Satvik / Hindu',
   jain: 'Jain',
