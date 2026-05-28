@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhojan — Pitch Deck</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #FAFAF7;
+    color: #1A1A1A;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .slides { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); height: 100vh; }
+
+  .slide {
+    min-width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 56px 72px; position: relative; overflow: hidden;
+  }
+
+  .slide::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(193,122,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .slide-number {
+    position: absolute; bottom: 28px; right: 40px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: #C17A2E; font-weight: 500; letter-spacing: 2px;
+  }
+
+  .brand {
+    position: absolute; top: 28px; left: 40px;
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    font-weight: 700; color: #C17A2E; letter-spacing: -0.3px;
+  }
+  .brand span { color: #4A6741; }
+
+  h1 {
+    font-family: 'Playfair Display', serif; font-size: 52px;
+    font-weight: 700; line-height: 1.05; letter-spacing: -1px;
+    margin-bottom: 18px; max-width: 800px;
+  }
+  h1 .highlight {
+    background: linear-gradient(135deg, #C17A2E, #E6AD45);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif; font-size: 38px;
+    font-weight: 600; line-height: 1.15; letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  p { font-size: 17px; line-height: 1.55; color: #555; margin-bottom: 10px; max-width: 640px; }
+  p strong { color: #1A1A1A; font-weight: 600; }
+  p.small { font-size: 14px; line-height: 1.5; }
+
+  .label {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px; color: #C17A2E;
+    margin-bottom: 14px; padding: 5px 12px;
+    border: 1px solid rgba(193,122,46,0.25);
+    border-radius: 100px; background: rgba(193,122,46,0.06);
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .grid-2 > * { max-width: 100%; }
+
+  .card {
+    background: rgba(255,255,255,0.7); backdrop-filter: blur(12px);
+    border: 1px solid #E8E3DC; border-radius: 14px; padding: 24px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #1A1A1A; }
+  .card p { font-size: 14px; color: #555; line-height: 1.5; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .step { display: flex; gap: 14px; margin-bottom: 12px; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 50%; background: #C17A2E; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; margin-top: 1px;
+  }
+  .step p { font-size: 14px; margin-bottom: 0; }
+
+  .pipeline {
+    display: flex; flex-direction: column; gap: 6px;
+    font-size: 13px;
+  }
+  .pipeline-row {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.6); padding: 8px 14px;
+    border-radius: 8px; border: 1px solid #E8E3DC;
+  }
+  .pipeline-row .arrow { color: #C17A2E; font-weight: 700; flex-shrink: 0; }
+  .pipeline-row code {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    background: #F5F0E8; padding: 2px 6px; border-radius: 4px;
+  }
+  .pipeline-branch {
+    display: flex; gap: 8px; padding-left: 28px; flex-wrap: wrap;
+  }
+  .pipeline-branch .tag {
+    font-size: 11px; padding: 3px 10px; border-radius: 100px;
+    font-weight: 600;
+  }
+
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .tech-item {
+    background: rgba(255,255,255,0.65); backdrop-filter: blur(8px);
+    border: 1px solid #E8E3DC; border-radius: 10px; padding: 14px 16px; text-align: center;
+  }
+  .tech-item .icon { font-size: 24px; margin-bottom: 4px; }
+  .tech-item .name { font-size: 13px; font-weight: 600; color: #1A1A1A; }
+  .tech-item .desc { font-size: 11px; color: #888; margin-top: 1px; }
+
+  .tag {
+    display: inline-block; padding: 3px 10px; border-radius: 100px;
+    font-size: 11px; font-weight: 600; margin: 2px;
+  }
+  .tag-primary { background: rgba(193,122,46,0.1); color: #C17A2E; border: 1px solid rgba(193,122,46,0.2); }
+  .tag-olive { background: rgba(74,103,65,0.1); color: #4A6741; border: 1px solid rgba(74,103,65,0.2); }
+
+  nav {
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 14px; z-index: 10;
+  }
+  nav button {
+    padding: 8px 20px; border-radius: 100px;
+    border: 1px solid #E8E3DC; background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px); font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 600; color: #1A1A1A;
+    cursor: pointer; transition: all 0.2s;
+  }
+  nav button:hover { border-color: #C17A2E; color: #C17A2E; }
+  nav button:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+  nav .dots { display: flex; gap: 6px; }
+  nav .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #D4CFC8; transition: all 0.3s; cursor: pointer;
+  }
+  nav .dot.active { background: #C17A2E; width: 22px; border-radius: 4px; }
+
+  .stat-row { display: flex; gap: 20px; margin-top: 16px; }
+  .stat { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #C17A2E; }
+  .stat-label { font-size: 13px; color: #888; font-weight: 500; }
+
+  @media (max-width: 768px) {
+    .slide { padding: 32px 20px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; }
+    p { font-size: 15px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 20px; }
+    .tech-grid { grid-template-columns: 1fr 1fr; }
+    .brand { top: 16px; left: 16px; font-size: 16px; }
+    .slide-number { bottom: 72px; right: 16px; }
+    nav { bottom: 16px; }
+    .stat-row { flex-wrap: wrap; }
+    .pipeline-branch { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides" id="slides">
+
+  <!-- SLIDE 1: Problem -->
+  <section class="slide">
+    <div class="brand">Bhojan<span>.</span></div>
+    <div class="label">The Problem</div>
+    <h1>Every cuisine has hidden ingredients. If you have restrictions, you eat blind.</h1>
+    <p>
+      A Jain traveler in New York orders "vegetarian" risotto. The waiter guarantees it's safe.
+      But the stock contains <strong>onion, garlic, mushroom, and white wine</strong> — none on the menu, none the waiter knows about.
+    </p>
+    <p>
+      This isn't just about Indians abroad. It's about <strong>anyone with dietary restrictions</strong> who wants to engage with local culture fully — eat at the local spots, try the regional specialties, attend the community meals — without compromising their practice.
+    </p>
+    <p>
+      Generic AI <strong>forgets your practice every session</strong> and lacks ingredient-level knowledge of specific traditions. No product today bridges the gap between "vegetarian" and what a practice actually requires.
+    </p>
+    <div class="stat-row">
+      <div>
+        <div class="stat">300M+</div>
+        <div class="stat-label">observant people worldwide without a dietary tool</div>
+      </div>
+      <div>
+        <div class="stat">6</div>
+        <div class="stat-label">major traditions with no digital compliance layer</div>
+      </div>
+      <div>
+        <div class="stat">0</div>
+        <div class="stat-label">products understand hidden risks like mushroom stock or garlic powder</div>
+      </div>
+    </div>
+    <div class="slide-number">01 / 04</div>
+  </section>
+
+  <!-- SLIDE 2: Solution & Processing Pipeline -->
+  <section class="slide">
+    <div class="brand">Bhojan<span>.</span></div>
+    <div class="label">How It Works</div>
+    <h2>"AI understands language. Bhojan understands <span class="highlight">practice</span>."</h2>
+    <div class="grid-2" style="margin-top:8px;">
+      <div>
+        <p class="small">
+          You set up your <strong>religious profile</strong> once: tradition, sub-tradition, strictness level, allergies, dislikes.
+          Bhojan remembers it permanently — across scanning sessions, across restaurants, across days.
+        </p>
+        <div class="card">
+          <h3>The Processing Pipeline</h3>
+          <div class="pipeline">
+            <div class="pipeline-row">
+              <span class="arrow">1</span>
+              User uploads menu image
+              <code>ScanClient.tsx</code>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">2</span>
+              Image compressed to JPEG, resized to 1200px, sent as base64
+              <code>resizeAndCompressImage()</code>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">3</span>
+              POST /api/scan — profile + image forwarded
+              <code>scan/route.ts</code>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">4</span>
+              AI Vision analysis: dish names, ingredients, compliance status, hidden risks
+              <div class="pipeline-branch">
+                <span class="tag tag-primary">NVIDIA Nemotron</span>
+                <span class="tag tag-olive">→ Gemini 2.0 Flash</span>
+                <span class="tag tag-primary">→ Ollama local</span>
+                <span class="tag tag-olive">→ Demo data</span>
+              </div>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">5</span>
+              Raw AI output parsed + validated with Zod schema
+              <code>schemas.ts</code>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">6</span>
+              Rules engine cross-checks every dish against 6 tradition rule packs + active observances
+              <code>rules-engine.ts → rule-packs.ts</code>
+            </div>
+            <div class="pipeline-row">
+              <span class="arrow">7</span>
+              Structured compliance JSON returned — status, confidence, violations, hidden risks, alternatives, kitchen questions
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>What the Rules Engine Checks</h3>
+          <p class="small">
+            <strong>Tradition rules</strong> — 6 packs in <code>rule-packs.ts</code>: satvik (garlic, onion, mushroom, alcohol, egg, vinegar), Jain (alliums + roots + fungi + honey + fermented), Halal (pork + alcohol + gelatin + certification), Kosher (pork + shellfish + meat-dairy separation + grape products), Christian (meat + dairy + wine/oil)
+          </p>
+          <p class="small" style="margin-top:6px;">
+            <strong>Observance rules</strong> — Ekadashi (grains/beans/lentils), Paryushana (leafy greens), Passover (chametz), Good Friday (meat) — dynamically applied based on date and profile
+          </p>
+          <p class="small" style="margin-top:6px;">
+            <strong>Allergies &amp; dislikes</strong> — free-text matching against dish name and ingredients
+          </p>
+          <p class="small" style="margin-top:6px;">
+            <strong>Confidence scoring</strong> — 0.0–1.0, adjusted by rule confidence strength. Uncertainty language in AI output triggers downgrade to WARNING.
+          </p>
+        </div>
+        <div class="card" style="background:rgba(255,248,225,0.4); border-color:rgba(193,122,46,0.2);">
+          <h3 style="color:#C17A2E;">The Compliance Card</h3>
+          <p class="small">Every dish returns: status badge (SAFE / WARNING / VIOLATION / UNCERTAIN), confidence %, specific violating ingredients, human-readable violation reason, hidden risk to ask about, 1–2 practical alternatives, observance note, kitchen questions to ask the chef</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-number">02 / 04</div>
+  </section>
+
+  <!-- SLIDE 3: Technology Stack -->
+  <section class="slide">
+    <div class="brand">Bhojan<span>.</span></div>
+    <div class="label">Technology Stack</div>
+    <h2>Modern, resilient, AI-native.</h2>
+    <p class="small" style="max-width:500px;">Zero infrastructure to manage. Multi-layered AI fallback ensures the demo never breaks.</p>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="icon">⚡</div>
+        <div class="name">Next.js 16 + React 19</div>
+        <div class="desc">App Router, strict TypeScript, Turbopack</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🧠</div>
+        <div class="name">Google Gemini 2.0 Flash</div>
+        <div class="desc">Primary AI — vision OCR + structured JSON output</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🎨</div>
+        <div class="name">Tailwind CSS v4 + shadcn/ui</div>
+        <div class="desc">radix-nova components, Framer Motion animations</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🔐</div>
+        <div class="name">Supabase</div>
+        <div class="desc">Auth, PostgreSQL with RLS, profile + scan persistence</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">⚙️</div>
+        <div class="name">Custom Rules Engine</div>
+        <div class="desc">6 tradition packs + 5 observance rule sets + Zod validation</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">🔄</div>
+        <div class="name">Multi-Layer AI Fallback</div>
+        <div class="desc">NVIDIA Nemotron → Gemini → Ollama local → demo JSON</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">☀️</div>
+        <div class="name">Offline Solar Calculator</div>
+        <div class="desc">SunCalc algorithm in ~50 lines — no API calls needed</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">📱</div>
+        <div class="name">Mobile-First (390px)</div>
+        <div class="desc">Bottom nav, touch interactions, responsive layouts</div>
+      </div>
+      <div class="tech-item">
+        <div class="icon">☁️</div>
+        <div class="name">Vercel</div>
+        <div class="desc">Edge-deployed, auto-scaling, no ops</div>
+      </div>
+    </div>
+    <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:4px;">
+      <span class="tag tag-primary">@google/generative-ai</span>
+      <span class="tag tag-olive">@supabase/ssr</span>
+      <span class="tag tag-primary">zod</span>
+      <span class="tag tag-olive">framer-motion</span>
+      <span class="tag tag-primary">tw-animate-css</span>
+      <span class="tag tag-olive">sonner toasts</span>
+      <span class="tag tag-primary">SunCalc algorithm</span>
+    </div>
+    <div class="slide-number">03 / 04</div>
+  </section>
+
+  <!-- SLIDE 4: Target Audience & Vision -->
+  <section class="slide">
+    <div class="brand">Bhojan<span>.</span></div>
+    <div class="label">Target Audience</div>
+    <h2>For anyone whose diet is more than a preference.</h2>
+    <div class="grid-2" style="margin-top:6px;">
+      <div>
+        <p class="small">
+          Bhojan is for <strong>anyone with dietary restrictions who still wants to fully engage with local food culture</strong> — the street stall, the family-run restaurant, the festival meal, the airline tray.
+        </p>
+        <p class="small">
+          The shared need: you want to <strong>participate</strong> in the local food experience, not isolate yourself. But you need ingredient-level certainty that no menu and no waiter can provide.
+        </p>
+        <div style="margin-top:16px; padding:16px 20px; background:rgba(193,122,46,0.06); border:1px solid rgba(193,122,46,0.15); border-radius:10px;">
+          <p class="small" style="margin-bottom:0; text-align:center;">
+            <strong>Founder:</strong> Shivam Dubey — initiated Gaudiya Vaishnava. Navigated satvik compliance in Boston, Dubai, and on Emirates flights.
+            <em style="color:#C17A2E; display:block; margin-top:4px;">"He lived the failure. That's why this exists."</em>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>Primary — Practice-bound eaters</h3>
+          <p class="small">
+            Satvik/Hindu (Ekadashi observers), Jain (Paryushana, root-vegetable avoiders), Halal (zabiha-only, alcohol-free), Kosher (separated, Passover-observant), Christian (Lent, Orthodox fast days).<br>
+            <em>Their diet is a religious obligation, not a lifestyle choice.</em>
+          </p>
+        </div>
+        <div class="card" style="margin-bottom:12px;">
+          <h3>Secondary — Culturally restricted eaters</h3>
+          <p class="small">
+            Indian diaspora navigating foreign cuisines. Immigrants and travelers who want to eat local without compromising family or community dietary norms.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Tertiary — Ethically restricted eaters</h3>
+          <p class="small">
+            Vegans needing hidden-animal-ingredient detection. People with religious-adjacent identities (cultural vegetarians, wellness-based restriction followers). Anyone who's ever asked "Does this have <em>X</em>?" and gotten an unreliable answer.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-number">04 / 04</div>
+  </section>
+
+</div>
+
+<nav>
+  <button id="prevBtn" disabled>← Prev</button>
+  <div class="dots" id="dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+  </div>
+  <button id="nextBtn">Next →</button>
+</nav>
+
+<script>
+  const slides = document.getElementById('slides');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+  const total = 4;
+
+  function goTo(index) {
+    current = index;
+    slides.style.transform = `translateX(-${current * 100}vw)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
+  nextBtn.addEventListener('click', () => { if (current < total - 1) goTo(current + 1); });
+  dots.forEach(d => d.addEventListener('click', () => goTo(Number(d.dataset.index))));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); if (current < total - 1) goTo(current + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); if (current > 0) goTo(current - 1); }
+  });
+</script>
+
+</body>
+</html>
