@@ -1,11 +1,13 @@
 export type Tradition = 'satvik' | 'jain' | 'halal' | 'kosher' | 'christian' | 'custom'
 export type ComplianceStatus = 'safe' | 'warning' | 'violation' | 'uncertain'
 export type OverallSafety = 'safe' | 'caution' | 'avoid'
+export type Strictness = 'standard' | 'strict' | 'festival'
 
 export interface UserProfile {
   id: string
   tradition: Tradition
   subTradition: string | null
+  strictness: Strictness
   allergies: string[]
   dislikes: string[]
   createdAt: string
@@ -17,10 +19,11 @@ export interface DishCompliance {
   status: ComplianceStatus
   confidence: number
   violations: string[]
-  violationReason: string
+  violationReason: string | null
   hiddenRisk: string | null
   alternatives: string[]
   observanceNote: string | null
+  askKitchen?: string[]
 }
 
 export interface ScanResult {
@@ -67,6 +70,13 @@ export interface MarketplaceItem {
   imageUrl: string | null
   description: string
   observanceTags: string[]
+}
+
+export interface DemoPersona {
+  id: string
+  name: string
+  description: string
+  profile: Pick<UserProfile, 'tradition' | 'subTradition' | 'strictness' | 'allergies' | 'dislikes'>
 }
 
 export const STATUS_STYLES = {

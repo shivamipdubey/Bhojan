@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Toaster } from 'sonner'
+import "@fontsource/geist-sans"
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -28,6 +30,7 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="font-body bg-[#FAFAF7] text-[#1A1A1A] antialiased min-h-screen">
         {children}
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   )

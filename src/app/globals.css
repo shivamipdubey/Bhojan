@@ -1,21 +1,4 @@
-:root {
-  --background: #FAFAF7;
-  --surface: #FFFFFF;
-  --accent-primary: #C17A2E;
-  --accent-secondary: #4A6741;
-  --status-safe: #2E7D5B;
-  --status-safe-bg: #EDF7F2;
-  --status-warning: #B8860B;
-  --status-warning-bg: #FFF8E1;
-  --status-violation: #C0392B;
-  --status-violation-bg: #FDECEA;
-  --status-uncertain: #888888;
-  --status-uncertain-bg: #F5F5F5;
-  --text-primary: #1A1A1A;
-  --text-secondary: #666666;
-  --border: #E8E3DC;
-}
-
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -25,14 +8,16 @@
 
 @theme inline {
   --font-display: var(--font-display), Georgia, serif;
-  --font-body: var(--font-body), system-ui, sans-serif;
+  --font-body: var(--font-body), "DM Sans", sans-serif;
+  --font-general: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-geist: "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --color-saffron: #C17A2E;
   --color-olive: #4A6741;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-body), "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-display), Georgia, serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -72,24 +57,43 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #FAFAF7;
+  --surface: #FFFFFF;
+  --surface-elevated: #F5F0E8;
+  --accent-primary: #C17A2E;
+  --accent-secondary: #4A6741;
+  --status-safe: #2E7D5B;
+  --status-safe-bg: #EDF7F2;
+  --status-warning: #B8860B;
+  --status-warning-bg: #FFF8E1;
+  --status-violation: #C0392B;
+  --status-violation-bg: #FDECEA;
+  --status-uncertain: #888888;
+  --status-uncertain-bg: #F5F5F5;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --border: #E8E3DC;
+  --border-strong: #C8C0B4;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #C17A2E;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F0E8;
+  --secondary-foreground: #1A1A1A;
+  --muted: #F5F0E8;
+  --muted-foreground: #666666;
+  --accent: #F5F0E8;
+  --accent-foreground: #1A1A1A;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --input: #E8E3DC;
+  --ring: #C17A2E;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -153,3 +157,59 @@
     @apply font-sans;
   }
 }
+
+body {
+  min-height: 100vh;
+}
+
+button, a, input, textarea, select {
+  font: inherit;
+}
+
+/* Custom Liquid Glass utilities - Warm Light Spiritual Version */
+.liquid-glass {
+  background: rgba(255, 250, 242, 0.45);
+  background-blend-mode: normal;
+  backdrop-filter: blur(8px);
+  border: none;
+  box-shadow: 
+    0 4px 20px -2px rgba(46, 28, 12, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.2px;
+  background: linear-gradient(180deg, 
+    rgba(193, 122, 46, 0.25) 0%, 
+    rgba(255, 255, 255, 0.5) 30%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    rgba(255, 255, 255, 0.5) 70%, 
+    rgba(193, 122, 46, 0.15) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Custom Marquee Keyframes & Utilities */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+

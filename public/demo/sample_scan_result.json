@@ -1,6 +1,6 @@
 {
   "restaurant": "Bella Italia",
-  "scanId": "demo-scan-001",
+  "scanId": "demo-bella-italia",
   "dishes": [
     {
       "name": "Margherita Pizza",
@@ -18,8 +18,8 @@
       "confidence": 0.94,
       "violations": ["mushrooms", "white wine"],
       "violationReason": "Contains mushrooms which violate satvik and Jain practice. Risotto stock almost always contains white wine.",
-      "hiddenRisk": "White wine is a standard ingredient in risotto preparation even when not stated on the menu.",
-      "alternatives": ["Penne Pomodoro", "Grilled vegetable plate — confirm no garlic"],
+      "hiddenRisk": "White wine is a standard ingredient in risotto preparation even when not stated on menu.",
+      "alternatives": ["Penne Pomodoro", "Grilled vegetable plate - ask to confirm no garlic"],
       "observanceNote": null
     },
     {
@@ -27,7 +27,7 @@
       "status": "safe",
       "confidence": 0.82,
       "violations": [],
-      "violationReason": "",
+      "violationReason": null,
       "hiddenRisk": "Confirm with kitchen that tomato sauce does not contain garlic. Some Italian restaurants add garlic as standard.",
       "alternatives": [],
       "observanceNote": "Safe today. On Ekadashi in 2 days, pasta will be restricted as it contains wheat."
@@ -36,9 +36,9 @@
       "name": "Caesar Salad",
       "status": "violation",
       "confidence": 0.96,
-      "violations": ["Worcestershire sauce", "anchovy", "egg"],
-      "violationReason": "Classic Caesar dressing contains Worcestershire sauce made with anchovies, and egg yolk in the dressing base.",
-      "hiddenRisk": "Even vegetarian Caesar versions often retain the Worcestershire flavor base. Always confirm.",
+      "violations": ["Worcestershire sauce", "anchovy"],
+      "violationReason": "Classic Caesar dressing contains Worcestershire sauce which is made with anchovies. It also commonly contains egg in the dressing.",
+      "hiddenRisk": "Even vegetarian Caesar often keeps the Worcestershire flavor base. Always confirm.",
       "alternatives": ["Garden salad with olive oil and lemon", "Ask for plain greens with no dressing"],
       "observanceNote": null
     },
@@ -46,20 +46,20 @@
       "name": "Garlic Bread",
       "status": "violation",
       "confidence": 0.99,
-      "violations": ["garlic"],
-      "violationReason": "Garlic is the primary ingredient. Garlic powder also present in the butter mix.",
+      "violations": ["garlic", "possible egg in bread"],
+      "violationReason": "Garlic is the primary ingredient. Garlic powder is also usually present in the butter mix.",
       "hiddenRisk": "Some focaccia-style garlic breads use egg wash on the crust.",
-      "alternatives": ["Plain bread or grissini — confirm no garlic butter"],
+      "alternatives": ["Plain bread or grissini - confirm no garlic butter"],
       "observanceNote": null
     },
     {
       "name": "Tiramisu",
       "status": "violation",
       "confidence": 0.98,
-      "violations": ["coffee liqueur", "eggs"],
-      "violationReason": "Traditional tiramisu contains Kahlua or Marsala wine (alcohol) and egg yolks in the mascarpone mix.",
+      "violations": ["coffee liqueur", "eggs", "possible gelatin"],
+      "violationReason": "Traditional tiramisu contains coffee liqueur or Marsala wine and egg yolks in the mascarpone mix.",
       "hiddenRisk": "Some restaurant versions use gelatin as a stabilizer.",
-      "alternatives": ["Fresh fruit plate", "Ask for a non-alcoholic dessert option"],
+      "alternatives": ["Fresh fruit plate", "Ask whether sorbet contains alcohol or gelatin"],
       "observanceNote": null
     },
     {
@@ -67,14 +67,14 @@
       "status": "uncertain",
       "confidence": 0.38,
       "violations": [],
-      "violationReason": "",
-      "hiddenRisk": "Panna cotta is set with gelatin. Cannot determine if vegetarian or agar-based without asking kitchen.",
+      "violationReason": null,
+      "hiddenRisk": "Panna cotta is often set with gelatin. Cannot determine whether it is vegetarian or agar-based without asking the kitchen directly.",
       "alternatives": ["Ask kitchen: is the panna cotta set with gelatin or agar-agar?"],
       "observanceNote": null
     }
   ],
   "overallSafety": "caution",
-  "observanceAlert": "Ekadashi is in 2 days. On that day, Penne Pomodoro and all pasta will be restricted as they contain wheat.",
+  "observanceAlert": "Ekadashi is in 2 days. On that day, Penne Pomodoro and all pasta will be restricted as they contain wheat. Plan ahead.",
   "safeCount": 1,
   "warningCount": 1,
   "violationCount": 4,
